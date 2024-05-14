@@ -5,33 +5,33 @@ environment{
   stages{
       stage('Build'){
           steps{
-              sh 'npm install'
+              bat 'npm install'
 
           }
       }
       stage('test'){
           steps{
-              sh 'echo "Test is running"'
+              bat 'echo "Test is running"'
           }
       }
       stage('Docker build'){
           steps{
-              sh 'docker build -t ayesha695/jenkins-integration:latest .'
+              bat 'docker build -t ayesha695/jenkins-integration:latest .'
           }
       }
       stage('login'){
           steps{
-              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+              bat 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
           }
       }
       stage('push'){
           steps{
-              sh 'docker push ayesha695/jenkins-integration:latest'
+              bat 'docker push ayesha695/jenkins-integration:latest'
           }
       }
       stage('deploy'){
           steps{
-              sh 'echo "Deploying the application"'
+              bat 'echo "Deploying the application"'
           }
       }
     
